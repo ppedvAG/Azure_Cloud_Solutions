@@ -1,4 +1,5 @@
 ﻿using Azure.Storage.Queues;
+using AzureQueue.Model;
 
 namespace AzureQueue.Receiver
 {
@@ -23,11 +24,26 @@ namespace AzureQueue.Receiver
                 }
                 else
                 {
-                    Console.WriteLine($"{msg.Value.MessageId} {msg.Value.Body}");
+                    //Console.WriteLine($"{msg.Value.MessageId} {msg.Value.Body}");
+
+                    var best = System.Text.Json.JsonSerializer.Deserialize<Bestellung>(msg.Value.Body);
+
+
                     client.DeleteMessage(msg.Value.MessageId, msg.Value.PopReceipt);
+
+                    ShowBestellung(best);
                 }
             }
 
+        }
+
+        private static void ShowBestellung(Bestellung best)
+        {
+            Console.WriteLine($"{best.Datum} von {best.Kunde.Name}, {best.Kunde.Strasse}, {best.Kunde.PLZ} {best.Kunde.Ort}, {best.Kunde.Land}");
+            foreach (var item in best.Dinge)
+            {
+                Console.WriteLine($"\t{item.Menge}x {item.Bezeichnung} {item.Preis:c}");
+            }
         }
     }
 }

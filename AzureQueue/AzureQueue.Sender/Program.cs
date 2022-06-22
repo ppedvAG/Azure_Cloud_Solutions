@@ -27,8 +27,8 @@ namespace AzureQueue.Sender
             kundenFaker.RuleFor(x => x.Land, x => x.Address.Country());
 
             var dingFaker = new Faker<Ding>();
-            //dingFaker.UseSeed(seed);
-            dingFaker.RuleFor(x => x.Bezeichnung, x => $"{x.Commerce.Color()} {x.Commerce.ProductAdjective()} {x.Commerce.ProductName()}");
+            dingFaker.UseSeed(seed);
+            dingFaker.RuleFor(x => x.Bezeichnung, x => $"{x.Commerce.Color()} {x.Commerce.ProductName()}");
             dingFaker.RuleFor(x => x.Preis, x => x.Random.Decimal(0, 100));
             dingFaker.RuleFor(x => x.Menge, x => x.Random.Int(1, 10));
 
@@ -44,10 +44,13 @@ namespace AzureQueue.Sender
                 var best = bestFaker.Generate();
                 ShowBestellung(best);
 
+                var json = System.Text.Json.JsonSerializer.Serialize<Bestellung>(best);
+                var resp = await client.SendMessageAsync(json);
+
                 //string messageText = $"HALLO {DateTime.Now:G}:{DateTime.Now:ffff}";
                 //var resp = await client.SendMessageAsync(messageText);
 
-                //Console.WriteLine($"MSG {resp.Value.MessageId} wurde versendet: {messageText}");
+                Console.WriteLine($"MSG {resp.Value.MessageId} wurde versendet");
             }
 
             Console.WriteLine("Ende");
