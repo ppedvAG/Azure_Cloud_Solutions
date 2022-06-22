@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.Sender", "AzureQueue.Sender\AzureQueue.Sender.csproj", "{2415AF09-F561-458E-BEF2-8AA90A5F0D13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureQueue.Sender", "AzureQueue.Sender\AzureQueue.Sender.csproj", "{2415AF09-F561-458E-BEF2-8AA90A5F0D13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.Receiver", "AzureQueue.Receiver\AzureQueue.Receiver.csproj", "{A563442A-7306-443B-A362-5955587B8264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureQueue.Receiver", "AzureQueue.Receiver\AzureQueue.Receiver.csproj", "{A563442A-7306-443B-A362-5955587B8264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.Model", "AzureQueue.Model\AzureQueue.Model.csproj", "{4E758DC4-560D-41D1-AD96-3BB58DD594CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A563442A-7306-443B-A362-5955587B8264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A563442A-7306-443B-A362-5955587B8264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A563442A-7306-443B-A362-5955587B8264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E758DC4-560D-41D1-AD96-3BB58DD594CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E758DC4-560D-41D1-AD96-3BB58DD594CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E758DC4-560D-41D1-AD96-3BB58DD594CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E758DC4-560D-41D1-AD96-3BB58DD594CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
