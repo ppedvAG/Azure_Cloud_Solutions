@@ -27,7 +27,7 @@ namespace HalloEfCore
 
         private void LoadMitarbeiter()
         {
-            myGrid.ItemsSource = repo.Mitarbeiter.Include(x => x.Abteilungen).ToList();
+            myGrid.ItemsSource = repo.Mitarbeiter.ToList();
         }
 
         private void Neu(object sender, RoutedEventArgs e)
@@ -69,8 +69,8 @@ namespace HalloEfCore
 
         private void DemoDaten(object sender, RoutedEventArgs e)
         {
-            var abt1 = new Abteilung() { Bezeichnung = "Holz" };
-            var abt2 = new Abteilung() { Bezeichnung = "Steine" };
+            var abt1 = new Abteilung() { Bezeichnung = "Holz", Id = 1 };
+            var abt2 = new Abteilung() { Bezeichnung = "Steine", Id = 2 };
 
             for (int i = 0; i < 100; i++)
             {
@@ -78,7 +78,8 @@ namespace HalloEfCore
                 {
                     Name = $"Fred {i:000}",
                     GebDatum = DateTime.Now.AddYears(-30).AddDays(i * 17 * -1),
-                    Beruf = "Macht dinge"
+                    Beruf = "Macht dinge",
+                    Id = i+1,
                 };
                 if (i % 2 == 0)
                     m.Abteilungen.Add(abt1);
