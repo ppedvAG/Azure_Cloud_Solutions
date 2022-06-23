@@ -14,7 +14,18 @@
             <Button Click="Speichern">Speichern</Button>
             <Button Click="Neu">Neu</Button>
             <Button Click="Löschen">Löschen</Button>
+            <Button Click="DemoDaten">Demo</Button>
         </WrapPanel>
-        <DataGrid x:Name="myGrid"/>
+        <DataGrid x:Name="myGrid">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="ABTEILUNGEN">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DataGrid ItemsSource="{Binding Abteilungen}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </controls:AdonisWindow>
