@@ -17,7 +17,11 @@ namespace HalloEfCore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HalloEf;Trusted_Connection=true;");
+#if DEBUG
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HalloEf;Trusted_Connection=true;");
+#else
+            optionsBuilder.UseSqlServer("Server=tcp:freds-server-andre.database.windows.net,1433;Initial Catalog=FredsDB;Persist Security Info=False;User ID=Fred;Password=TYuxqka4;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#endif
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
